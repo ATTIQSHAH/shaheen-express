@@ -1,6 +1,8 @@
 # Shaheen Express — Modern Pitch-Demo Website
 
 > High-performance, luxury pitch-demo website for **Shaheen Express** (Kohat-based intercity bus service), built with **Astro 5** and **Tailwind CSS**.
+> 
+> 🌐 **Live Website**: [https://shaheen-express-phi.vercel.app](https://shaheen-express-phi.vercel.app)
 
 ![Before and After Redesign Comparison](./before-and-after.jpg)
 
