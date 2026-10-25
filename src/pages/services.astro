@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import amenitiesData from '../content/amenities.json';
+import siteData from '../content/site.json';
+---
+
+<BaseLayout
+  title="Services & Onboard Amenities | Shaheen Express"
+  description="Discover the services and amenities offered aboard Shaheen Express buses: modern comfort, reclining seats, air conditioning, complimentary Wi-Fi, and safety standards."
+>
+  <!-- Header Banner -->
+  <section class="bg-[#0B132B] text-white py-16 sm:py-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl relative z-10">
+      <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-800 text-cyan-400 text-xs font-bold uppercase tracking-wider border border-slate-700 mb-4">
+        Comfort & Safety
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight font-['Plus_Jakarta_Sans'] text-white">
+        Services & Onboard Amenities
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg mt-4 leading-relaxed">
+        Modern comfort, executive seating, and rigorous safety maintenance across our fleet.
+      </p>
+    </div>
+  </section>
+
+  <!-- Intro Overview Section (Verbatim) -->
+  <section class="py-16 sm:py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold uppercase tracking-wider border border-amber-200">
+            Our Service Commitment
+          </div>
+          <h2 class="text-3xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans'] tracking-tight">
+            Shaheen Express Comfort & Reliability
+          </h2>
+          <p class="text-slate-600 text-lg leading-relaxed">
+            {amenitiesData.intro}
+          </p>
+          <div class="pt-2 flex items-center gap-4">
+            <a
+              href={siteData.phone_link}
+              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm shadow-md transition-all"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z" />
+              </svg>
+              Book By Phone: {siteData.phone}
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+            <img
+              src="/images/interior4.webp"
+              alt="Luxury bus interior cabin with executive high-back seats and blue ambient LED lighting"
+              width="960"
+              height="1280"
+              class="w-full h-auto object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Feature Sections (Verbatim Items) -->
+  <section class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <!-- Feature 1: Onboard Amenities -->
+      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-md grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center font-bold">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans']">
+            {amenitiesData.items[0].title}
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            {amenitiesData.items[0].description}
+          </p>
+        </div>
+        <div class="lg:col-span-5 rounded-2xl overflow-hidden shadow-lg border border-slate-100 aspect-16/10">
+          <img
+            src="/images/bus1.webp"
+            alt="Shaheen Express Yutong Master coach"
+            width="1080"
+            height="810"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Feature 2: WIFI -->
+      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-md grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4 order-1 lg:order-2">
+          <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-600 flex items-center justify-center font-bold">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+            </svg>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans']">
+            {amenitiesData.items[1].title}
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            {amenitiesData.items[1].description}
+          </p>
+        </div>
+        <div class="lg:col-span-5 rounded-2xl overflow-hidden shadow-lg border border-slate-100 aspect-16/10 order-2 lg:order-1">
+          <img
+            src={amenitiesData.items[1].image || "/images/wifi-stock.webp"}
+            alt={amenitiesData.items[1].image_alt}
+            width="1200"
+            height="675"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Feature 3: Safety -->
+      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-md grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-bold">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans']">
+            {amenitiesData.items[2].title}
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            {amenitiesData.items[2].description}
+          </p>
+        </div>
+        <div class="lg:col-span-5 rounded-2xl overflow-hidden shadow-lg border border-slate-100 aspect-16/10">
+          <img
+            src={amenitiesData.items[2].image || "/images/safety-stock.webp"}
+            alt={amenitiesData.items[2].image_alt}
+            width="1200"
+            height="675"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

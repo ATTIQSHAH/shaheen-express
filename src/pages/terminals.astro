@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminalTable from '../components/TerminalTable.astro';
+import siteData from '../content/site.json';
+---
+
+<BaseLayout
+  title="Terminals & Booking Offices | Shaheen Express"
+  description="Find Shaheen Express terminal locations and booking offices in Kohat, Rawalpindi, Abbottabad, and Gujranwala. Get direct terminal phone numbers and contact details."
+>
+  <!-- Header Banner with Terminal Photo -->
+  <section class="bg-[#0B132B] text-white py-16 sm:py-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-800 text-amber-400 text-xs font-bold uppercase tracking-wider border border-slate-700">
+            Booking & Terminal Directory
+          </span>
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight font-['Plus_Jakarta_Sans'] text-white">
+            Terminals & Booking Offices
+          </h1>
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+            Direct booking phone numbers and terminal stations for Kohat to Pindi, Abbottabad, and Gujranwala routes.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-700 relative group">
+            <img
+              src="/images/interior5.webp"
+              alt="Shaheen Express Shajee Terminal Kohat passenger terminal and bus bay"
+              width="960"
+              height="720"
+              class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="eager"
+            />
+            <div class="absolute bottom-3 left-3 right-3 bg-slate-950/85 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 text-white flex items-center justify-between text-xs font-semibold">
+              <span>Shajee Terminal Kohat</span>
+              <span class="text-amber-400">Head Office Hub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terminals Table Section -->
+  <section class="py-16 sm:py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <!-- Live Table Heading verbatim -->
+      <div class="space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-cyan-700 bg-cyan-100 px-3 py-1 rounded-full">
+          Route Network
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans']">
+          Kohat to Pindi / Abbottabad / Gujranwala
+        </h2>
+        <p class="text-slate-600 text-sm">
+          Call the respective terminal counters for seat reservations, cargo bookings, and departure verification.
+        </p>
+      </div>
+
+      <!-- Terminal Table Component -->
+      <TerminalTable showSearch={true} />
+
+      <!-- Main Head Office Card -->
+      <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-xs font-bold text-amber-600 uppercase tracking-wider block">Central Dispatch Office</span>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans']">
+            Main Hub: Khyber Coach Stand Kohat Cantt
+          </h3>
+          <p class="text-slate-600 text-sm">
+            {siteData.address}
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+          <a
+            href={siteData.phone_link}
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-400 text-slate-950 font-bold text-sm shadow-md hover:bg-amber-300 transition-colors"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z" />
+            </svg>
+            Call Head Office ({siteData.phone})
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 text-slate-700 hover:text-slate-950 font-bold text-sm transition-colors"
+          >
+            View Map & Directions
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

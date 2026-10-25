@@ -1,0 +1,127 @@
+---
+import siteData from '../content/site.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+  type?: string;
+  preloadImage?: string;
+}
+
+const {
+  title = `${siteData.name} | Intercity Luxury & Sleeper Bus Service`,
+  description = "Shaheen Express is one of Pakistan's premier intercity bus services, operating modern luxury and sleeper coaches from Kohat to Lahore, Karachi, Rawalpindi, Abbottabad, Gujranwala, Bannu, and Hangu.",
+  image = "/images/bus1.webp",
+  canonicalUrl = Astro.url.href,
+  type = "website",
+  preloadImage
+} = Astro.props;
+
+const siteUrl = siteData.url;
+const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
+// Organization and LocalBusiness schema
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BusTrip",
+      "@id": `${siteUrl}/#organization`,
+      "name": siteData.name,
+      "url": siteUrl,
+      "logo": `${siteUrl}/images/logo.webp`,
+      "image": fullImageUrl,
+      "description": siteData.footer_about,
+      "telephone": siteData.phone_raw,
+      "email": siteData.email,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": siteData.address,
+        "addressLocality": "Kohat",
+        "addressRegion": "Khyber Pakhtunkhwa",
+        "addressCountry": "PK"
+      },
+      "sameAs": [
+        siteData.social.facebook,
+        siteData.social.youtube
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": `${siteUrl}/#localbusiness`,
+      "name": siteData.name,
+      "url": siteUrl,
+      "telephone": siteData.phone_raw,
+      "priceRange": "$$",
+      "image": fullImageUrl,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": siteData.address,
+        "addressLocality": "Kohat Cantt",
+        "addressRegion": "KPK",
+        "addressCountry": "PK"
+      }
+    }
+  ]
+};
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0B132B" />
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+{preloadImage && (
+  <link rel="preload" as="image" href={preloadImage} type="image/webp" fetchpriority="high" />
+)}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullImageUrl} />
+<meta property="og:site_name" content={siteData.name} />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullImageUrl} />
+
+<!-- Preconnect Google Fonts for 0 layout shift and fast Lighthouse -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;600&display=swap"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;600&display=swap"
+  rel="stylesheet"
+  media="print"
+  onload="this.media='all'"
+/>
+<noscript>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+</noscript>
+
+<!-- Structured Data JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />

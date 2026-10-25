@@ -1,0 +1,128 @@
+[
+  {
+    "file": "logo.webp",
+    "category": "logo",
+    "alt": "Shaheen Express official eagle emblem logo",
+    "rating": "use",
+    "src": "/images/logo.webp",
+    "width": 512,
+    "height": 512
+  },
+  {
+    "file": "bus1.webp",
+    "category": "exterior bus",
+    "alt": "Shaheen Express Yutong Master luxury bus in white and cyan livery",
+    "rating": "use",
+    "src": "/images/bus1.webp",
+    "thumb": "/images/bus1-thumb.webp",
+    "width": 1080,
+    "height": 810
+  },
+  {
+    "file": "bus2.webp",
+    "category": "exterior bus",
+    "alt": "Shaheen Express luxury bus in vibrant green and white livery",
+    "rating": "use",
+    "src": "/images/bus2.webp",
+    "thumb": "/images/bus2-thumb.webp",
+    "width": 1080,
+    "height": 810
+  },
+  {
+    "file": "bus3.webp",
+    "category": "exterior bus",
+    "alt": "Three Shaheen Express luxury buses lined up side-by-side with yellow accents",
+    "rating": "use",
+    "src": "/images/bus3.webp",
+    "thumb": "/images/bus3-thumb.webp",
+    "width": 1080,
+    "height": 810
+  },
+  {
+    "file": "bus4.webp",
+    "category": "exterior bus",
+    "alt": "Shaheen Express royal blue and white coach parked at terminal bay",
+    "rating": "use",
+    "src": "/images/bus4.webp",
+    "thumb": "/images/bus4-thumb.webp",
+    "width": 960,
+    "height": 720
+  },
+  {
+    "file": "founder.webp",
+    "category": "owner/leader",
+    "alt": "Naveed Hussain, Founder of Shaheen Express",
+    "rating": "use",
+    "src": "/images/founder.webp",
+    "thumb": "/images/founder-thumb.webp",
+    "width": 546,
+    "height": 710
+  },
+  {
+    "file": "founder2.webp",
+    "category": "owner/leader",
+    "alt": "Zahid Khan, Leader of Shaheen Express",
+    "rating": "use",
+    "src": "/images/founder2.webp",
+    "thumb": "/images/founder2-thumb.webp",
+    "width": 546,
+    "height": 710
+  },
+  {
+    "file": "interior1.webp",
+    "category": "sleeper",
+    "alt": "Single sleeper berth with beige quilted mattress, red curtain and ambient lamp",
+    "rating": "use",
+    "src": "/images/interior1.webp",
+    "thumb": "/images/interior1-thumb.webp",
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "file": "interir2.webp",
+    "category": "sleeper",
+    "alt": "Duplicate shot of single sleeper berth cabin",
+    "rating": "skip",
+    "reason": "Duplicate frame of interior1.webp"
+  },
+  {
+    "file": "interior3.webp",
+    "category": "sleeper",
+    "alt": "Double family sleeper berth compartment with twin pillows and warm lighting",
+    "rating": "use",
+    "src": "/images/interior3.webp",
+    "thumb": "/images/interior3-thumb.webp",
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "file": "interior4.webp",
+    "category": "interior",
+    "alt": "Luxury bus interior cabin with executive high-back seats and blue ambient LED lighting",
+    "rating": "use",
+    "src": "/images/interior4.webp",
+    "thumb": "/images/interior4-thumb.webp",
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "file": "interior5.webp",
+    "category": "other",
+    "alt": "Shaheen Express Shajee Terminal Kohat passenger terminal and bus bay",
+    "rating": "use",
+    "src": "/images/interior5.webp",
+    "thumb": "/images/interior5-thumb.webp",
+    "width": 960,
+    "height": 1280
+  },
+  {
+    "file": "intero6.webp",
+    "category": "sleeper",
+    "alt": "Sleeper coach interior corridor with neon blue ambient lighting and double-decker berths",
+    "rating": "use",
+    "src": "/images/intero6.webp",
+    "thumb": "/images/intero6-thumb.webp",
+    "width": 960,
+    "height": 1280
+  }
+]

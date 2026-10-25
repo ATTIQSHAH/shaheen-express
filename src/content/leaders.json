@@ -1,0 +1,23 @@
+{
+  "section_title": "Visionary Leaders",
+  "leaders": [
+    {
+      "id": "naveed-hussain",
+      "name": "Naveed Hussain",
+      "role": "Founder",
+      "message": "As the founder, my vision has always been to create a reliable, safe, and comfortable travel experience for all our passengers. Whether you’re commuting to work, embarking on a family trip, or exploring new destinations, we are dedicated to providing a seamless journey from start to finish. With a focus on safety, efficiency, and customer satisfaction, we’re not just moving people – we’re connecting communities. Thank you for choosing us as your travel partner.",
+      "image": "/images/founder.webp",
+      "thumb": "/images/founder-thumb.webp",
+      "image_alt": "Naveed Hussain, Founder of Shaheen Express"
+    },
+    {
+      "id": "zahid-khan",
+      "name": "Zahid Khan",
+      "role": "Leader",
+      "message": "When we started Shaheen Express, my goal was simple: to make travel more accessible, convenient, and enjoyable for everyone. Over the years, we’ve grown into a company that not only meets the highest standards of safety and reliability but also values each passenger’s unique journey. Our buses aren’t just a means of transport – they represent our commitment to comfort, punctuality, and exceptional service. It’s my privilege to welcome you aboard, and I look forward to being part of your travel experience",
+      "image": "/images/founder2.webp",
+      "thumb": "/images/founder2-thumb.webp",
+      "image_alt": "Zahid Khan, Leader of Shaheen Express"
+    }
+  ]
+}

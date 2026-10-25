@@ -1,0 +1,125 @@
+[
+  {
+    "id": "1",
+    "slug": "karachi-to-peshawar-kohat",
+    "route": "Karachi to Peshawar/Kohat",
+    "origin": "Karachi",
+    "destination": "Peshawar/Kohat",
+    "time": "9:00 AM",
+    "second_time": "2:00 PM",
+    "booking_no": "03339507835",
+    "booking_phone_raw": "03339507835",
+    "booking_numbers": [
+      {
+        "display": "03339507835",
+        "tel": "03339507835"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "slug": "kohat-peshawar-to-karachi",
+    "route": "Kohat/Peshawar to Karachi",
+    "origin": "Kohat/Peshawar",
+    "destination": "Karachi",
+    "time": "9:00 AM",
+    "second_time": "11:00 AM",
+    "booking_no": "03338313849",
+    "booking_phone_raw": "03338313849",
+    "booking_numbers": [
+      {
+        "display": "03338313849",
+        "tel": "03338313849"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "slug": "kohat-to-lahore",
+    "route": "Kohat to Lahore",
+    "origin": "Kohat",
+    "destination": "Lahore",
+    "time": "9:00 PM",
+    "second_time": "9:30 PM",
+    "booking_no": "03331583335",
+    "booking_phone_raw": "03331583335",
+    "booking_numbers": [
+      {
+        "display": "03331583335",
+        "tel": "03331583335"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "slug": "hangu-to-lahore",
+    "route": "Hangu to Lahore",
+    "origin": "Hangu",
+    "destination": "Lahore",
+    "time": "8:00 PM",
+    "second_time": "---",
+    "booking_no": "03369523642",
+    "booking_phone_raw": "03369523642",
+    "booking_numbers": [
+      {
+        "display": "03369523642",
+        "tel": "03369523642"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "slug": "bannu-to-lahore",
+    "route": "Bannu to Lahore",
+    "origin": "Bannu",
+    "destination": "Lahore",
+    "time": "8:00 PM",
+    "second_time": "---",
+    "booking_no": "03334343823",
+    "booking_phone_raw": "03334343823",
+    "booking_numbers": [
+      {
+        "display": "03334343823",
+        "tel": "03334343823"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "slug": "lahore-to-kohat",
+    "route": "Lahore to Kohat",
+    "origin": "Lahore",
+    "destination": "Kohat",
+    "time": "10:00 PM",
+    "second_time": "10:30 PM",
+    "booking_no": "033594944818/03319249571",
+    "booking_phone_raw": "033594944818",
+    "booking_numbers": [
+      {
+        "display": "033594944818",
+        "tel": "033594944818"
+      },
+      {
+        "display": "03319249571",
+        "tel": "03319249571"
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "slug": "lahore-to-bannu",
+    "route": "Lahore to Bannu",
+    "origin": "Lahore",
+    "destination": "Bannu",
+    "time": "9:00 PM",
+    "second_time": "---",
+    "booking_no": "03359494818",
+    "booking_phone_raw": "03359494818",
+    "booking_numbers": [
+      {
+        "display": "03359494818",
+        "tel": "03359494818"
+      }
+    ]
+  }
+]

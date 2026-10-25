@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import routes from '../../content/routes.json';
+import terminals from '../../content/terminals.json';
+import siteData from '../../content/site.json';
+
+export async function getStaticPaths() {
+  return routes.map((r) => ({
+    params: { slug: r.slug },
+    props: { routeData: r }
+  }));
+}
+
+const { routeData } = Astro.props;
+
+// Related terminals if route mentions relevant cities
+const relatedTerminals = terminals.filter((t) => {
+  const originMatch = routeData.origin.toLowerCase().includes('kohat') && t.route.toLowerCase().includes('kohat');
+  const destMatch = t.route.toLowerCase().includes(routeData.destination.toLowerCase());
+  return originMatch || destMatch;
+});
+
+const isSleeper = routeData.slug === 'kohat-to-lahore' || routeData.slug === 'lahore-to-kohat';
+---
+
+<BaseLayout
+  title={`${routeData.route} Bus Timing & Booking | Shaheen Express`}
+  description={`Check departure timings and book tickets for ${routeData.route} with Shaheen Express. Daily departures at ${routeData.time}${routeData.second_time !== '---' ? ` and ${routeData.second_time}` : ''}. Call ${routeData.booking_no}.`}
+>
+  <!-- Header Banner -->
+  <section class="bg-[#0B132B] text-white py-16 sm:py-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Breadcrumbs -->
+      <nav class="mb-6 flex items-center gap-2 text-xs text-slate-400 font-medium">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <a href="/schedule" class="hover:text-white transition-colors">Schedule</a>
+        <span>/</span>
+        <span class="text-amber-400 font-semibold">{routeData.route}</span>
+      </nav>
+
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-amber-400 text-xs font-bold uppercase tracking-wider border border-slate-700 mb-4">
+          Daily Scheduled Route
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight font-['Plus_Jakarta_Sans'] text-white">
+          {routeData.route}
+        </h1>
+        <p class="text-slate-300 text-base sm:text-lg mt-3">
+          Daily departures connecting {routeData.origin} with {routeData.destination} aboard Shaheen Express luxury coaches.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Route Details Section -->
+  <section class="py-16 sm:py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Left Column: Route Timings Card (7 cols) -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-md space-y-8">
+            <div>
+              <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Departure Timetable</span>
+              <h2 class="text-2xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans'] mt-1">
+                Scheduled Service Timings
+              </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+                <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block">First Departure Time</span>
+                <span class="text-3xl font-extrabold text-slate-900 block mt-2 font-['Plus_Jakarta_Sans'] tabular-nums">
+                  {routeData.time}
+                </span>
+                <span class="text-xs text-emerald-600 font-semibold mt-1 inline-flex items-center gap-1">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Daily Service
+                </span>
+              </div>
+
+              <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+                <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Second Departure Time</span>
+                <span class="text-3xl font-extrabold text-slate-900 block mt-2 font-['Plus_Jakarta_Sans'] tabular-nums">
+                  {routeData.second_time}
+                </span>
+                <span class="text-xs text-slate-500 font-medium mt-1 block">
+                  {routeData.second_time !== '---' ? 'Evening Departure' : 'Single Daily Departure'}
+                </span>
+              </div>
+            </div>
+
+            <!-- Booking Numbers Call Box -->
+            <div class="bg-gradient-to-br from-[#0B132B] to-slate-900 rounded-2xl p-6 text-white space-y-4">
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">
+                Official Booking Contacts
+              </span>
+              <p class="text-xs text-slate-300">
+                Call the terminal dispatchers directly to confirm seat availability and reservations:
+              </p>
+              <div class="flex flex-col sm:flex-row gap-3">
+                {routeData.booking_numbers.map((b) => (
+                  <a
+                    href={`tel:${b.tel}`}
+                    class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-sm shadow-md transition-all"
+                  >
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z" />
+                    </svg>
+                    Call: {b.display}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <!-- Special Sleeper Note if Kohat to Lahore -->
+            {isSleeper && (
+              <div class="bg-rose-50 border border-rose-200 rounded-2xl p-5 flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v11m0-4h18m0-7v11M3 10h18M7 10V7a2 2 0 012-2h6a2 2 0 012 2v3" />
+                  </svg>
+                </div>
+                <div class="text-sm">
+                  <h3 class="font-bold text-rose-950">Luxury Sleeper Bus Available</h3>
+                  <p class="text-rose-800 mt-0.5">
+                    This route features our premium double and single berth sleeper cabins with ambient lighting, individual AC vents, and privacy curtains.
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <!-- All Routes Navigation -->
+          <div class="pt-4 flex items-center justify-between">
+            <a href="/schedule" class="text-sm font-bold text-slate-700 hover:text-amber-600 transition-colors flex items-center gap-2">
+              <span>← Back to Complete Schedule</span>
+            </a>
+            <a href="/terminals" class="text-sm font-bold text-slate-700 hover:text-amber-600 transition-colors flex items-center gap-2">
+              <span>View Terminal Offices →</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Visual & Terminal Card (5 cols) -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-white">
+            <img
+              src={isSleeper ? "/images/interior1.webp" : "/images/bus1.webp"}
+              alt={`${routeData.route} Bus Service`}
+              width="960"
+              height="720"
+              class="w-full h-auto object-cover"
+              loading="lazy"
+            />
+            <div class="p-6 space-y-4">
+              <h3 class="text-lg font-bold text-slate-900 font-['Plus_Jakarta_Sans']">
+                Travel Information
+              </h3>
+              <ul class="space-y-3 text-xs sm:text-sm text-slate-600">
+                <li class="flex items-center gap-3">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+                  <span>Modern air-conditioned Yutong coaches</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-2 h-2 rounded-full bg-cyan-500 shrink-0"></span>
+                  <span>Complimentary onboard Wi-Fi</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+                  <span>Experienced professional drivers & CEO safety checks</span>
+                </li>
+              </ul>
+              <div class="pt-2">
+                <a
+                  href={siteData.whatsapp_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-md transition-all"
+                >
+                  WhatsApp Booking Support
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

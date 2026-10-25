@@ -1,0 +1,29 @@
+{
+  "intro": "Shaheen Express is synonymous with modern comfort and reliability. Our buses are designed with your travel experience in mind, featuring spacious seating, air conditioning, and a range of amenities to ensure your journey is as enjoyable as possible. Our CEO places a strong emphasis on safety and maintenance, guaranteeing that our fleet is consistently in top-notch condition and comprises the latest models.",
+  "items": [
+    {
+      "id": "onboard-amenities",
+      "title": "Onboard Amenities:",
+      "description": "Our coaches are equipped with a variety of amenities designed to enhance your travel experience. Enjoy the comfort of reclining seats, refreshing air conditioning, and more, all aimed at making your journey as enjoyable and relaxing as possible.",
+      "image": "/images/interior4.webp",
+      "image_alt": "Executive bus cabin interior with high-back recliner seats and blue ambient lighting",
+      "icon": "sparkles"
+    },
+    {
+      "id": "wifi",
+      "title": "WIFI:",
+      "description": "Stay connected on the go with our complimentary Wi-Fi service! Whether you want to catch up with friends and family or browse the web, you can enjoy seamless connectivity throughout your journey.",
+      "image": "/images/wifi-stock.webp",
+      "image_alt": "Passenger enjoying high-speed onboard Wi-Fi connectivity aboard luxury coach",
+      "icon": "wifi"
+    },
+    {
+      "id": "safety",
+      "title": "Safety:",
+      "description": "Your safety is our utmost priority. Our buses undergo regular maintenance checks to ensure they are always in excellent condition, providing you with peace of mind during your travels.",
+      "image": "/images/safety-stock.webp",
+      "image_alt": "Certified technician conducting pre-departure vehicle safety inspection at maintenance bay",
+      "icon": "shield"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shaheenexpress.com.pk/sitemap-index.xml

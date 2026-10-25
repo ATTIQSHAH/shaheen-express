@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StatsRow from '../components/StatsRow.astro';
+import LeaderCard from '../components/LeaderCard.astro';
+import siteData from '../content/site.json';
+import leadersData from '../content/leaders.json';
+---
+
+<BaseLayout
+  title="About Us | Shaheen Express"
+  description="Learn about Shaheen Express, established in 2014 in Kohat. From 2 buses to over 30 luxury coaches connecting Pakistan's major cities under visionary leadership."
+>
+  <!-- Page Header Banner -->
+  <section class="bg-[#0B132B] text-white py-16 sm:py-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl">
+      <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-800 text-amber-400 text-xs font-bold uppercase tracking-wider border border-slate-700 mb-4">
+        Since 2014 • Kohat-based
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight font-['Plus_Jakarta_Sans'] text-white">
+        About Us
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg mt-4 leading-relaxed">
+        {siteData.tagline}
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats Row -->
+  <StatsRow />
+
+  <!-- Full About Text Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Visuals Column -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+            <img
+              src="/images/bus3.webp"
+              alt="Three Shaheen Express luxury buses lined up side-by-side with yellow accents"
+              width="1080"
+              height="810"
+              class="w-full h-auto object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+            <img
+              src="/images/interior5.webp"
+              alt="Shaheen Express Shajee Terminal Kohat passenger terminal and bus bay"
+              width="960"
+              height="720"
+              class="w-full h-auto object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <!-- Verbatim Story Text -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold uppercase tracking-wider border border-amber-200">
+            Our Journey & History
+          </div>
+
+          <h2 class="text-3xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans'] tracking-tight">
+            Shaheen Express Bus Service
+          </h2>
+
+          <div class="space-y-5 text-slate-600 text-base leading-relaxed">
+            {siteData.about_paragraphs.map((paragraph) => (
+              <p class="border-l-2 border-amber-400 pl-4 py-0.5">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <div class="pt-4 flex flex-wrap items-center gap-4">
+            <a
+              href="/schedule"
+              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-400 text-slate-950 font-bold text-sm shadow-md hover:bg-amber-300 transition-colors"
+            >
+              <span>View Route Schedule</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+            <a
+              href="/fleet"
+              class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 text-slate-700 hover:text-slate-950 font-bold text-sm transition-colors"
+            >
+              View Luxury Fleet
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visionary Leaders Section -->
+  <section class="py-20 sm:py-24 bg-slate-50 border-t border-slate-200" id="leaders">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-100/70 px-3 py-1 rounded-full">
+          Guiding Leadership
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans'] tracking-tight">
+          {leadersData.section_title}
+        </h2>
+        <p class="text-slate-600 text-base">
+          Messages from the leadership driving Shaheen Express’s vision for safety, punctuality, and passenger convenience.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {leadersData.leaders.map((leader) => (
+          <LeaderCard
+            name={leader.name}
+            role={leader.role}
+            message={leader.message}
+            image={leader.image}
+            thumb={leader.thumb}
+            imageAlt={leader.image_alt}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

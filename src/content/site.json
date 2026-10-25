@@ -1,0 +1,49 @@
+{
+  "name": "Shaheen Express",
+  "legal_name": "Shaheen Express (Pvt) Ltd",
+  "tagline": "where your journey is our priority!",
+  "url": "https://shaheenexpress.com.pk",
+  "established": 2014,
+  "phone": "0333-1583335",
+  "phone_raw": "03331583335",
+  "phone_international": "+923331583335",
+  "phone_link": "tel:923331583335",
+  "whatsapp": "923331583335",
+  "whatsapp_link": "https://wa.me/923331583335?text=Hello%20Shaheen%20Express,%20I%20would%20like%20to%20inquire%20about%20bus%20booking.",
+  "email": "shaheenexpress21@gmail.com",
+  "address": "Khyber Coach Stand opp. FG Public School, Kohat, Cantt.",
+  "google_maps_embed_url": "https://www.google.com/maps?q=Khyber+Coach+Stand+opp+FG+Public+School+Kohat+Cantt&output=embed",
+  "social": {
+    "facebook": "https://www.facebook.com/shaheenexpress21?mibextid=ZbWKwL",
+    "youtube": "https://youtube.com/@shaheenexpress21?si=2bMcWLD4zys3DZDU"
+  },
+  "stats": [
+    {
+      "value": "2014",
+      "prefix": "",
+      "suffix": "",
+      "label": "Started Bus Service",
+      "description": "Providing safe intercity transit since 2014"
+    },
+    {
+      "value": "30",
+      "prefix": "+",
+      "suffix": "",
+      "label": "Bus Fleet",
+      "description": "Modern fleet of luxury & sleeper coaches"
+    },
+    {
+      "value": "20",
+      "prefix": "+",
+      "suffix": "",
+      "label": "Serving Cities",
+      "description": "Connecting major destinations across Pakistan"
+    }
+  ],
+  "about_paragraphs": [
+    "Welcome to Shaheen Express, where your journey is our priority! Established in 2014, we have rapidly ascended to become one of Pakistan’s premier intercity bus services. What began with just two buses and a single route from Kohat to Lahore has blossomed into a robust fleet of over 30 state-of-the-art buses, traversing the length and breadth of the country.",
+    "At Shaheen Express, we believe that every traveler deserves a comfortable and safe journey. Our commitment to excellence is reflected in our modern fleet, dedicated staff, and a customer-first approach that has won us the trust of countless passengers. Whether you’re heading to a bustling city or a serene destination, we ensure a seamless travel experience filled with convenience and care.",
+    "Join us on the road, and let Shaheen Express transform the way you travel. Experience the difference with every mile!"
+  ],
+  "footer_about": "Shaheen Express is a prominent intercity bus service in Pakistan, established in 2014. Since its inception, the company has grown significantly and is now recognized as one of the largest bus operators in the country."
+}

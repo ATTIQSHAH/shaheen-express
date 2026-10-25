@@ -1,0 +1,22 @@
+{
+  "heading": "Shaheen Express started Sleeper buses from Kohat to Lahore",
+  "route": "Kohat to Lahore",
+  "summary": "Shaheen Express proudly introduces luxury sleeper buses from Kohat to Lahore, offering private berths, superior comfort, and a peaceful overnight journey.",
+  "images": [
+    {
+      "src": "/images/interior3.webp",
+      "thumb": "/images/interior3-thumb.webp",
+      "alt": "Double sleeper berth with twin pillows and ambient reading lighting"
+    },
+    {
+      "src": "/images/interior1.webp",
+      "thumb": "/images/interior1-thumb.webp",
+      "alt": "Single luxury sleeper berth with quilted mattress and red privacy curtains"
+    },
+    {
+      "src": "/images/intero6.webp",
+      "thumb": "/images/intero6-thumb.webp",
+      "alt": "Sleeper coach aisle corridor with neon blue ambient lighting and double-decker sleeping pods"
+    }
+  ]
+}

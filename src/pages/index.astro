@@ -1,0 +1,408 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import StatsRow from '../components/StatsRow.astro';
+import LeaderCard from '../components/LeaderCard.astro';
+import RouteTable from '../components/RouteTable.astro';
+import siteData from '../content/site.json';
+import leadersData from '../content/leaders.json';
+import amenitiesData from '../content/amenities.json';
+import newsData from '../content/news.json';
+import imagesData from '../content/images.json';
+
+const fleetPreviewImages = imagesData.filter(img => img.rating === 'use' && (img.category === 'exterior bus' || img.category === 'sleeper')).slice(0, 6);
+---
+
+<BaseLayout
+  title="Shaheen Express | Intercity Luxury & Sleeper Bus Service"
+  description="Shaheen Express is one of Pakistan's premier intercity bus services, established in 2014 in Kohat. Operating luxury coaches and modern sleeper buses to Lahore, Karachi, Rawalpindi, and beyond."
+  preloadImage="/images/bus1.webp"
+>
+  <!-- 1. Hero Section -->
+  <Hero />
+
+  <!-- 2. Stats Row -->
+  <StatsRow />
+
+  <!-- 3. About Summary Section -->
+  <section class="py-20 sm:py-24 bg-white" id="about">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Visual Column -->
+        <div class="lg:col-span-5 order-2 lg:order-1">
+          <div class="relative">
+            <div class="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+              <img
+                src="/images/bus2.webp"
+                alt="Shaheen Express luxury coach in vibrant green and white livery"
+                width="1080"
+                height="810"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+              <div class="absolute bottom-4 left-4 right-4 bg-slate-900/85 backdrop-blur-md p-4 rounded-xl border border-white/10 text-white">
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">Established 2014</span>
+                <span class="text-sm font-semibold">From 2 buses to over 30 state-of-the-art coaches</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Content -->
+        <div class="lg:col-span-7 space-y-6 order-1 lg:order-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold uppercase tracking-wider border border-amber-200">
+            About Our Company
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans'] tracking-tight">
+            About Us
+          </h2>
+
+          <div class="space-y-4 text-slate-600 leading-relaxed text-base">
+            {siteData.about_paragraphs.map((p) => (
+              <p>{p}</p>
+            ))}
+          </div>
+
+          <div class="pt-2 flex flex-wrap items-center gap-4">
+            <a
+              href="/about"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0B132B] hover:bg-slate-800 text-amber-400 font-bold text-sm transition-all shadow-md"
+            >
+              <span>Read Full Story & Leadership</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a
+              href="/schedule"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-300 hover:border-amber-400 text-slate-700 hover:text-slate-950 font-bold text-sm transition-colors"
+            >
+              Explore Bus Routes
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Kohat-Lahore Sleeper Bus Highlight -->
+  <section class="py-20 bg-slate-900 text-white relative overflow-hidden" id="sleeper">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div class="space-y-3 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-950/80 text-rose-300 text-xs font-bold border border-rose-800/80 uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+            New Service Milestone
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-['Plus_Jakarta_Sans'] text-white">
+            {newsData.heading}
+          </h2>
+          <p class="text-slate-300 text-base leading-relaxed">
+            {newsData.summary}
+          </p>
+        </div>
+
+        <div class="shrink-0">
+          <a
+            href="tel:03331583335"
+            class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-amber-400 text-slate-950 font-extrabold text-sm shadow-lg shadow-amber-400/20 hover:bg-amber-300 transition-all"
+          >
+            <svg class="w-4 h-4 text-slate-950" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z" />
+            </svg>
+            Book Sleeper: 0333-1583335
+          </a>
+        </div>
+      </div>
+
+      <!-- Sleeper Photos Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {newsData.images.map((item, index) => (
+          <div class="group relative bg-slate-800 rounded-2xl overflow-hidden border border-slate-700/80 shadow-xl">
+            <div class="aspect-3/4 sm:aspect-4/5 w-full overflow-hidden">
+              <img
+                src={item.src}
+                alt={item.alt}
+                width="960"
+                height="1280"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/30 to-transparent p-5 flex flex-col justify-end">
+              <span class="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">
+                {index === 0 ? 'Double Family Berth' : index === 1 ? 'Single Private Berth' : 'Night Mood Cabin'}
+              </span>
+              <p class="text-white text-xs sm:text-sm font-medium leading-snug">
+                {item.alt}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Quick Schedule Strip for Kohat-Lahore Sleeper -->
+      <div class="mt-8 bg-slate-800/80 backdrop-blur-md rounded-2xl p-5 border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-400/20 text-amber-400 flex items-center justify-center font-bold">
+            TIME
+          </div>
+          <div>
+            <span class="text-slate-400 block">Kohat to Lahore Sleeper Departures:</span>
+            <span class="text-white font-bold text-base">9:00 PM &nbsp;|&nbsp; 2nd Time: 9:30 PM</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-slate-400">Direct Booking:</span>
+          <a href="tel:03331583335" class="text-amber-400 hover:underline font-bold text-base">03331583335</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Amenities Preview Section -->
+  <section class="py-20 bg-slate-50 border-y border-slate-200" id="services">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-100 text-cyan-800 text-xs font-bold uppercase tracking-wider">
+          Travel in Comfort
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans'] tracking-tight">
+          Services & Onboard Amenities
+        </h2>
+        <p class="text-slate-600 text-base leading-relaxed">
+          {amenitiesData.intro}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {amenitiesData.items.map((item) => (
+          <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-900 text-amber-400 flex items-center justify-center shadow-md">
+                {item.id === 'onboard-amenities' && (
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                )}
+                {item.id === 'wifi' && (
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                  </svg>
+                )}
+                {item.id === 'safety' && (
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                )}
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 font-['Plus_Jakarta_Sans']">
+                {item.title}
+              </h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+            {item.image && (
+              <div class="mt-6 rounded-xl overflow-hidden aspect-16/10">
+                <img
+                  src={item.image}
+                  alt={item.image_alt || item.title}
+                  width="960"
+                  height="600"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <a
+          href="/services"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0B132B] hover:bg-slate-800 text-amber-400 font-bold text-sm transition-colors shadow-md"
+        >
+          <span>Explore All Passenger Services</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Fleet Gallery Preview -->
+  <section class="py-20 bg-white" id="fleet">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-12">
+        <div class="space-y-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-300">
+            State-of-the-art
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans'] tracking-tight">
+            Our Luxurious Fleet
+          </h2>
+        </div>
+        <a
+          href="/fleet"
+          class="inline-flex items-center gap-1.5 text-sm font-bold text-slate-800 hover:text-amber-600 transition-colors"
+        >
+          <span>View Full Photo Gallery</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {fleetPreviewImages.map((img) => (
+          <a
+            href="/fleet"
+            class="group block relative rounded-2xl overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition-all"
+          >
+            <div class="aspect-4/3 w-full overflow-hidden bg-slate-900">
+              <img
+                src={img.thumb || img.src}
+                alt={img.alt}
+                width={img.width || 800}
+                height={img.height || 600}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent p-4 flex flex-col justify-end">
+              <span class="text-amber-400 text-[11px] font-bold uppercase tracking-wider mb-1">
+                {img.category}
+              </span>
+              <p class="text-white text-xs font-medium line-clamp-1">
+                {img.alt}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Schedule Preview Section -->
+  <section class="py-20 bg-slate-50 border-t border-slate-200" id="time">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10">
+        <div class="space-y-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-cyan-700 bg-cyan-100 px-3 py-1 rounded-full">
+            Daily Departures
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans'] tracking-tight">
+            Shaheen Express Bus Time Schedule and Route
+          </h2>
+        </div>
+        <a
+          href="/schedule"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider hover:bg-amber-300 transition-colors shadow-sm"
+        >
+          <span>View All 7 Routes & Booking Numbers</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Route Table preview (top 4 rows) -->
+      <RouteTable limit={4} showSearch={false} />
+
+      <div class="mt-8 text-center">
+        <a
+          href="/schedule"
+          class="inline-flex items-center gap-2 text-sm font-bold text-slate-800 hover:text-amber-600 transition-colors"
+        >
+          <span>Looking for Abbottabad, Gujranwala or Pindi terminals? Click here to view full schedule →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Visionary Leaders Section -->
+  <section class="py-20 sm:py-24 bg-white" id="leaders">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-300">
+          Executive Leadership
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans'] tracking-tight">
+          {leadersData.section_title}
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Guided by principles of safety, passenger care, and community connectivity across Pakistan.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {leadersData.leaders.map((leader) => (
+          <LeaderCard
+            name={leader.name}
+            role={leader.role}
+            message={leader.message}
+            image={leader.image}
+            thumb={leader.thumb}
+            imageAlt={leader.image_alt}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Contact Strip & Map Section -->
+  <section class="py-16 bg-slate-900 text-white border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-[#0B132B] to-slate-900 rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-4">
+            <span class="text-amber-400 text-xs font-bold uppercase tracking-wider">Book Your Seat Today</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-['Plus_Jakarta_Sans']">
+              Ready to travel with Shaheen Express?
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base">
+              Call our main booking office or connect with our customer support on WhatsApp for quick ticketing assistance.
+            </p>
+            <div class="flex flex-wrap items-center gap-6 pt-2 text-sm text-slate-300">
+              <span class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z" />
+                </svg>
+                {siteData.phone}
+              </span>
+              <span class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                {siteData.address}
+              </span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
+            <a
+              href={siteData.phone_link}
+              class="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-base transition-all shadow-lg"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z" />
+              </svg>
+              Direct Dial Booking
+            </a>
+            <a
+              href="/contact"
+              class="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-xl border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-white font-bold text-base transition-all"
+            >
+              Contact & Terminal Info
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,193 @@
+---
+import rawImages from '../content/images.json';
+
+interface Props {
+  category?: string;
+  limit?: number;
+  showFilters?: boolean;
+}
+
+const { category, limit, showFilters = true } = Astro.props;
+
+// Filter out skipped images
+const validImages = rawImages.filter((img) => img.rating === 'use');
+
+const filteredImages = category
+  ? validImages.filter((img) => img.category === category)
+  : validImages;
+
+const images = limit ? filteredImages.slice(0, limit) : filteredImages;
+
+const filterCategories = [
+  { label: 'All Photos', key: 'all' },
+  { label: 'Exterior Coaches', key: 'exterior bus' },
+  { label: 'Sleeper Berths', key: 'sleeper' },
+  { label: 'Interiors & Terminals', key: 'interior_terminal' }
+];
+---
+
+<div class="space-y-8">
+  {showFilters && (
+    <div class="flex flex-wrap items-center justify-center gap-2" id="galleryFilterButtons">
+      {filterCategories.map((cat, i) => (
+        <button
+          type="button"
+          data-filter={cat.key}
+          class={`filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+            i === 0
+              ? 'bg-[#0B132B] text-amber-400 shadow-md ring-2 ring-amber-400/30'
+              : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+          }`}
+        >
+          {cat.label}
+        </button>
+      ))}
+    </div>
+  )}
+
+  <!-- Gallery Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryGrid">
+    {images.map((img) => {
+      const catKey = img.category === 'interior' || img.category === 'other' ? 'interior_terminal' : img.category;
+      return (
+        <div
+          class="gallery-item group relative bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 shadow-md cursor-pointer hover:shadow-xl transition-all duration-300"
+          data-category={catKey}
+          data-src={img.src}
+          data-alt={img.alt}
+        >
+          <div class="aspect-4/3 w-full overflow-hidden bg-slate-800">
+            <img
+              src={img.thumb || img.src}
+              alt={img.alt}
+              width={img.width || 800}
+              height={img.height || 600}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Overlay Badge & Caption -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-5 flex flex-col justify-between">
+            <div class="flex justify-end">
+              <span class="px-2.5 py-1 rounded-full bg-amber-400 text-slate-950 text-[11px] font-bold uppercase tracking-wider">
+                {img.category}
+              </span>
+            </div>
+            <div>
+              <p class="text-white text-xs sm:text-sm font-medium line-clamp-2 drop-shadow">
+                {img.alt}
+              </p>
+              <span class="text-amber-400 text-[11px] font-bold tracking-wide mt-1.5 flex items-center gap-1">
+                <span>View Fullscreen</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- Lightbox Modal (Zero Dependency Vanilla JS) -->
+  <div
+    id="lightboxModal"
+    class="fixed inset-0 z-50 hidden bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image Preview"
+  >
+    <button
+      type="button"
+      id="lightboxCloseBtn"
+      class="absolute top-4 right-4 z-50 p-3 rounded-full bg-slate-800 text-white hover:bg-amber-400 hover:text-slate-950 focus:outline-none transition-colors"
+      aria-label="Close modal"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="relative max-w-5xl max-h-[85vh] flex flex-col items-center">
+      <img
+        id="lightboxImg"
+        src=""
+        alt=""
+        class="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl border border-white/10"
+      />
+      <p id="lightboxCaption" class="mt-4 text-center text-sm sm:text-base font-medium text-slate-200 max-w-2xl px-4"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Filter tabs
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const items = document.querySelectorAll<HTMLElement>('.gallery-item');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-filter') || 'all';
+
+      // Update button active state
+      filterBtns.forEach((b) => {
+        b.classList.remove('bg-[#0B132B]', 'text-amber-400', 'ring-2', 'ring-amber-400/30');
+        b.classList.add('bg-white', 'text-slate-700');
+      });
+      btn.classList.add('bg-[#0B132B]', 'text-amber-400', 'ring-2', 'ring-amber-400/30');
+      btn.classList.remove('bg-white', 'text-slate-700');
+
+      // Filter grid items
+      items.forEach((item) => {
+        const itemCategory = item.getAttribute('data-category');
+        if (target === 'all' || itemCategory === target) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Lightbox logic
+  const lightbox = document.getElementById('lightboxModal');
+  const lightboxImg = document.getElementById('lightboxImg') as HTMLImageElement | null;
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const closeBtn = document.getElementById('lightboxCloseBtn');
+
+  items.forEach((item) => {
+    item.addEventListener('click', () => {
+      const src = item.getAttribute('data-src') || '';
+      const alt = item.getAttribute('data-alt') || '';
+
+      if (lightbox && lightboxImg && lightboxCaption) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt;
+        lightboxCaption.textContent = alt;
+        lightbox.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  const closeLightbox = () => {
+    if (lightbox) {
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (lightboxImg) lightboxImg.src = '';
+    }
+  };
+
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>

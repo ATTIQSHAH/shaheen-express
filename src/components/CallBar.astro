@@ -1,0 +1,35 @@
+---
+import siteData from '../content/site.json';
+---
+
+<!-- Sticky Mobile Call & WhatsApp Bar -->
+<aside
+  class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#070C1B]/95 backdrop-blur-lg border-t border-slate-800 p-2.5 px-4 shadow-2xl transition-transform duration-200"
+  aria-label="Quick Booking Actions"
+>
+  <div class="flex items-center gap-3 max-w-md mx-auto">
+    <!-- Call Button -->
+    <a
+      href={siteData.phone_link}
+      class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm shadow-md shadow-amber-500/20 active:scale-95 transition-transform"
+    >
+      <svg class="w-4 h-4 text-slate-950" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z" />
+      </svg>
+      <span>Call to Book</span>
+    </a>
+
+    <!-- WhatsApp Button -->
+    <a
+      href={siteData.whatsapp_link}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-md shadow-emerald-600/20 active:scale-95 transition-transform"
+    >
+      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.995.545 1.777.818 2.796.819 3.18 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.766-5.768-5.766zm9.965 5.765c-.004 5.52-4.49 9.999-10.01 9.999-1.758 0-3.414-.46-4.869-1.265l-5.117 1.342 1.366-4.99c-.896-1.508-1.37-3.238-1.37-5.086.004-5.52 4.49-10.001 10.01-10.001 5.518 0 9.99 4.48 9.99 10.001z"/>
+      </svg>
+      <span>WhatsApp</span>
+    </a>
+  </div>
+</aside>

@@ -1,0 +1,48 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  message: string;
+  image: string;
+  thumb?: string;
+  imageAlt: string;
+}
+
+const { name, role, message, image, thumb, imageAlt } = Astro.props;
+---
+
+<div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-xl shadow-slate-900/5 flex flex-col md:flex-row gap-6 sm:gap-8 items-center md:items-start group hover:border-amber-300 transition-all duration-300">
+  <!-- Leader Photo with Badge -->
+  <div class="relative shrink-0">
+    <div class="w-36 h-44 sm:w-44 sm:h-56 rounded-2xl overflow-hidden ring-4 ring-amber-400/20 group-hover:ring-amber-400 transition-all shadow-md bg-slate-100">
+      <img
+        src={image}
+        alt={imageAlt}
+        width="546"
+        height="710"
+        class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+        loading="lazy"
+      />
+    </div>
+    <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-[#0B132B] text-amber-400 text-xs font-bold rounded-full border border-slate-700 uppercase tracking-wider shadow">
+      {role}
+    </span>
+  </div>
+
+  <!-- Message & Info -->
+  <div class="flex-1 text-center md:text-left space-y-3 pt-2">
+    <div>
+      <h3 class="text-2xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans'] tracking-tight">
+        {name}
+      </h3>
+      <span class="text-sm font-bold text-amber-800 tracking-wide uppercase block">
+        Shaheen Express Leadership
+      </span>
+    </div>
+
+    <!-- Quote Block -->
+    <blockquote class="relative text-slate-600 text-sm sm:text-base leading-relaxed italic bg-slate-50/80 p-4 sm:p-5 rounded-2xl border-l-4 border-amber-400">
+      “{message}”
+    </blockquote>
+  </div>
+</div>

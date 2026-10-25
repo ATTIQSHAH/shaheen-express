@@ -1,0 +1,162 @@
+---
+import terminals from '../content/terminals.json';
+
+interface Props {
+  filterRoute?: string;
+  showSearch?: boolean;
+}
+
+const { filterRoute, showSearch = true } = Astro.props;
+
+const displayTerminals = filterRoute
+  ? terminals.filter((t) => t.route.toLowerCase().includes(filterRoute.toLowerCase()))
+  : terminals;
+
+// Group by route
+const routesList = Array.from(new Set(displayTerminals.map((t) => t.route)));
+---
+
+<div class="space-y-6">
+  {showSearch && (
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+      <div class="flex items-center gap-2 text-slate-700 font-semibold text-sm">
+        <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+        <span>Search Terminals & Booking Offices:</span>
+      </div>
+      <div class="w-full sm:w-72 relative">
+        <input
+          type="text"
+          id="terminalSearchInput"
+          placeholder="Filter by route or terminal name..."
+          class="w-full pl-4 pr-10 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 transition-all"
+          aria-label="Search terminals and booking offices"
+        />
+        <svg class="w-4 h-4 text-slate-400 absolute right-3 top-3 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+    </div>
+  )}
+
+  <!-- Desktop Table (md and up) -->
+  <div class="hidden md:block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md">
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse" id="desktopTerminalTable">
+        <thead>
+          <tr class="bg-[#0B132B] text-white text-xs uppercase tracking-wider font-semibold border-b border-slate-800">
+            <th scope="col" class="py-4 px-6">Route</th>
+            <th scope="col" class="py-4 px-6">Terminal Name</th>
+            <th scope="col" class="py-4 px-6">Booking No</th>
+            <th scope="col" class="py-4 px-6 text-right">Call Office</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100 text-sm font-medium text-slate-700">
+          {displayTerminals.map((t) => (
+            <tr class="terminal-table-row hover:bg-amber-50/50 transition-colors">
+              <td class="py-4 px-6 font-bold text-slate-900">
+                <span class="inline-flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
+                  {t.route}
+                </span>
+              </td>
+              <td class="py-4 px-6 text-slate-800 font-semibold">
+                {t.terminal_name}
+              </td>
+              <td class="py-4 px-6 font-mono text-xs">
+                <span class="font-bold text-slate-900 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200 inline-block">
+                  {t.booking_no}
+                </span>
+              </td>
+              <td class="py-4 px-6 text-right">
+                <div class="flex items-center justify-end gap-2">
+                  {t.booking_numbers.map((num) => (
+                    <a
+                      href={`tel:${num.tel}`}
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors shadow-sm"
+                    >
+                      <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z" />
+                      </svg>
+                      {num.display}
+                    </a>
+                  ))}
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Mobile Cards View -->
+  <div class="grid grid-cols-1 gap-4 md:hidden" id="mobileTerminalCards">
+    {displayTerminals.map((t) => (
+      <div class="terminal-card-item bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200/60">
+            {t.route}
+          </span>
+        </div>
+        <h3 class="text-base font-extrabold text-slate-900">
+          {t.terminal_name}
+        </h3>
+        <div class="text-xs text-slate-500 font-mono">
+          Contact: <span class="font-bold text-slate-800">{t.booking_no}</span>
+        </div>
+        <div class="pt-1 flex flex-col gap-2">
+          {t.booking_numbers.map((num) => (
+            <a
+              href={`tel:${num.tel}`}
+              class="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-amber-400 text-slate-950 font-bold text-xs shadow-sm"
+            >
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z" />
+              </svg>
+              Call {num.display}
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Empty search message -->
+  <div id="noTerminalResults" class="hidden p-8 text-center bg-white rounded-2xl border border-slate-200">
+    <p class="text-base font-bold text-slate-800">No matching terminals found</p>
+    <p class="text-sm text-slate-500 mt-1">Please check your spelling or contact our main Kohat office.</p>
+  </div>
+</div>
+
+<script>
+  const terminalSearch = document.getElementById('terminalSearchInput') as HTMLInputElement | null;
+  const terminalRows = document.querySelectorAll<HTMLTableRowElement>('.terminal-table-row');
+  const terminalCards = document.querySelectorAll<HTMLElement>('.terminal-card-item');
+  const noTerminals = document.getElementById('noTerminalResults');
+
+  if (terminalSearch) {
+    terminalSearch.addEventListener('input', (e) => {
+      const q = (e.target as HTMLInputElement).value.trim().toLowerCase();
+      let matches = 0;
+
+      terminalRows.forEach((row) => {
+        const text = row.textContent?.toLowerCase() || '';
+        const match = text.includes(q);
+        row.style.display = match ? '' : 'none';
+        if (match) matches++;
+      });
+
+      terminalCards.forEach((card) => {
+        const text = card.textContent?.toLowerCase() || '';
+        const match = text.includes(q);
+        card.style.display = match ? '' : 'none';
+      });
+
+      if (noTerminals) {
+        noTerminals.classList.toggle('hidden', matches > 0);
+      }
+    });
+  }
+</script>

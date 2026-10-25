@@ -1,0 +1,73 @@
+---
+interface Props {
+  route: string;
+  origin: string;
+  destination: string;
+  time: string;
+  secondTime: string;
+  bookingNo: string;
+  bookingNumbers: Array<{ display: string; tel: string }>;
+  slug: string;
+}
+
+const { route, origin, destination, time, secondTime, bookingNo, bookingNumbers, slug } = Astro.props;
+---
+
+<div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-sm hover:shadow-md hover:border-amber-400 transition-all flex flex-col justify-between gap-5 group">
+  <div>
+    <!-- Route Header -->
+    <div class="flex items-start justify-between gap-3 mb-3">
+      <h3 class="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors">
+        {route}
+      </h3>
+      <span class="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-xs font-semibold shrink-0 uppercase tracking-wider">
+        Daily
+      </span>
+    </div>
+
+    <!-- Departure Times -->
+    <div class="grid grid-cols-2 gap-3 py-3 border-y border-slate-100 bg-slate-50/70 rounded-xl px-3 my-3">
+      <div>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-600 block">Departure 1</span>
+        <span class="text-sm sm:text-base font-extrabold text-slate-900 tabular-nums">
+          {time}
+        </span>
+      </div>
+      <div>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-600 block">Departure 2</span>
+        <span class="text-sm sm:text-base font-extrabold text-slate-900 tabular-nums">
+          {secondTime}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Phone & Action Links -->
+  <div class="space-y-2.5 pt-1">
+    <div class="text-xs text-slate-600 flex items-center justify-between">
+      <span>Booking Contacts:</span>
+      <span class="font-mono font-semibold text-slate-800">{bookingNo}</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      {bookingNumbers.map((num) => (
+        <a
+          href={`tel:${num.tel}`}
+          class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shadow-sm transition-colors"
+        >
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z" />
+          </svg>
+          Call {num.display}
+        </a>
+      ))}
+    </div>
+
+    <a
+      href={`/routes/${slug}`}
+      class="block text-center text-xs font-semibold text-slate-600 hover:text-amber-600 py-1"
+    >
+      View Route Details & Terminals →
+    </a>
+  </div>
+</div>

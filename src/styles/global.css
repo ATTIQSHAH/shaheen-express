@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --brand-navy: #0B132B;
+    --brand-navy-light: #1C2541;
+    --brand-navy-dark: #060A17;
+    --brand-gold: #E5A910;
+    --brand-gold-hover: #D97706;
+    --brand-cyan: #0284C7;
+    --brand-crimson: #BE123C;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1E293B;
+    background-color: #F8FAFC;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom focus outline */
+  :focus-visible {
+    outline: 2px solid #E5A910;
+    outline-offset: 2px;
+  }
+}
+
+/* Tabular numbers for clean schedule alignment */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-panel-dark {
+  background: rgba(11, 19, 43, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Subtle gradient animations */
+.hero-gradient {
+  background: radial-gradient(circle at 80% 20%, rgba(2, 132, 199, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 20% 80%, rgba(229, 169, 16, 0.12) 0%, transparent 50%),
+              #0B132B;
+}
+
+/* Clean print styling */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

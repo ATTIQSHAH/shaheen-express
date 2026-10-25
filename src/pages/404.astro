@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="404 - Page Not Found | Shaheen Express"
+  description="The page you are looking for does not exist. Browse Shaheen Express bus schedules, fleet details, and intercity routes."
+>
+  <section class="py-24 sm:py-32 bg-slate-50 text-center">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider">
+        404 Error
+      </span>
+      <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 font-['Plus_Jakarta_Sans'] tracking-tight">
+        Page Not Found
+      </h1>
+      <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+        The route or page you requested could not be located. Use the navigation buttons below to explore our schedules or return to the homepage.
+      </p>
+      <div class="pt-4 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#0B132B] hover:bg-slate-800 text-amber-400 font-bold text-sm transition-all shadow-md"
+        >
+          <span>Return Home</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+        </a>
+        <a
+          href="/schedule"
+          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-sm transition-colors shadow-sm"
+        >
+          <span>View Bus Schedule</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

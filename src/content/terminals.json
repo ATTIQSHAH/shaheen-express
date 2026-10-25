@@ -1,0 +1,97 @@
+[
+  {
+    "id": "1",
+    "route": "Kohat to Pindi",
+    "terminal_name": "ShaJee Terminal Kohat",
+    "booking_no": "0335-1583335",
+    "booking_phone_raw": "03351583335",
+    "booking_numbers": [
+      {
+        "display": "0335-1583335",
+        "tel": "03351583335"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "route": "Kohat to Pindi",
+    "terminal_name": "Skyways Terminal Faizabad",
+    "booking_no": "0333-9633251 / 051-111-555-567",
+    "booking_phone_raw": "03339633251",
+    "booking_numbers": [
+      {
+        "display": "0333-9633251",
+        "tel": "03339633251"
+      },
+      {
+        "display": "051-111-555-567",
+        "tel": "051111555567"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "route": "Kohat to Pindi",
+    "terminal_name": "Pirwadhai Mor Terminal Kohistan",
+    "booking_no": "0337-9651100",
+    "booking_phone_raw": "03379651100",
+    "booking_numbers": [
+      {
+        "display": "0337-9651100",
+        "tel": "03379651100"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "route": "Kohat to Abbottabad",
+    "terminal_name": "Kohat",
+    "booking_no": "0337-1976671",
+    "booking_phone_raw": "03371976671",
+    "booking_numbers": [
+      {
+        "display": "0337-1976671",
+        "tel": "03371976671"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "route": "Kohat to Abbottabad",
+    "terminal_name": "Abbottabad Sardar Travel",
+    "booking_no": "0992-335238",
+    "booking_phone_raw": "0992335238",
+    "booking_numbers": [
+      {
+        "display": "0992-335238",
+        "tel": "0992335238"
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "route": "Kohat to Gujranwala",
+    "terminal_name": "Kohat",
+    "booking_no": "0335-1583335",
+    "booking_phone_raw": "03351583335",
+    "booking_numbers": [
+      {
+        "display": "0335-1583335",
+        "tel": "03351583335"
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "route": "Kohat to Gujranwala",
+    "terminal_name": "Gujranwala Star Travel",
+    "booking_no": "0337-96541104",
+    "booking_phone_raw": "033796541104",
+    "booking_numbers": [
+      {
+        "display": "0337-96541104",
+        "tel": "033796541104"
+      }
+    ]
+  }
+]
